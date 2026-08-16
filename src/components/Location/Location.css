@@ -1,0 +1,38 @@
+.location-section {
+  background: var(--color-black);
+}
+
+.location-card {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: var(--space-xl);
+  background: var(--color-charcoal);
+  border: 1px solid rgba(212, 168, 67, 0.15);
+  border-radius: 12px;
+}
+
+.location-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--color-gold);
+  margin: 0 auto var(--space-md);
+}
+
+.location-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-cream);
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-xs);
+}
+
+.location-city {
+  font-size: 1.1rem;
+  color: rgba(245, 240, 232, 0.6);
+  margin-bottom: var(--space-lg);
+}
+
+.location-card .btn {
+  min-width: 200px;
+}

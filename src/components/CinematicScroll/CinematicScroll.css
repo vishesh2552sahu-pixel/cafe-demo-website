@@ -1,0 +1,192 @@
+.cinematic-scroll {
+  position: relative;
+  /* Height is set dynamically for scroll trigger, but we set a fallback */
+}
+
+.cinematic-scroll-pin {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--color-black);
+}
+
+/* Food Slides */
+.cinematic-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.cinematic-slide.active {
+  opacity: 1;
+}
+
+.cinematic-slide-image-wrapper {
+  position: relative;
+  width: 80%;
+  max-width: 600px;
+  aspect-ratio: 1;
+}
+
+.cinematic-slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.8));
+  will-change: transform;
+}
+
+/* Glow effect behind food */
+.cinematic-slide-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(ellipse, rgba(212, 168, 67, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Text Overlay */
+.cinematic-text {
+  position: absolute;
+  bottom: 12%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 5;
+  padding: 0 var(--space-md);
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: transform, opacity;
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.cinematic-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cinematic-text h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  color: var(--color-gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 40px rgba(212, 168, 67, 0.2);
+}
+
+.cinematic-text p {
+  font-size: clamp(0.9rem, 1.5vw, 1.15rem);
+  color: rgba(245, 240, 232, 0.6);
+  font-style: italic;
+}
+
+/* Transition effects */
+.cinematic-transition-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.cinematic-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(10, 10, 10, 0.7) 100%);
+  pointer-events: none;
+}
+
+/* Progress bar */
+.cinematic-progress {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.cinematic-progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(212, 168, 67, 0.3);
+  transition: all var(--transition-base);
+}
+
+.cinematic-progress-dot.active {
+  background: var(--color-gold);
+  box-shadow: 0 0 10px rgba(212, 168, 67, 0.5);
+  transform: scale(1.3);
+}
+
+/* Cheese drip effect */
+.cinematic-cheese-drip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.cheese-drip-svg {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 200px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-scroll-pin {
+    height: auto;
+  }
+
+  .cinematic-slide {
+    position: relative;
+    opacity: 1;
+    min-height: 80vh;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cinematic-slide-image-wrapper {
+    width: 75%;
+    max-width: 350px;
+  }
+
+  .cinematic-text {
+    bottom: 15%;
+  }
+
+  .cinematic-progress {
+    bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cinematic-slide-image-wrapper {
+    width: 70%;
+    max-width: 280px;
+  }
+
+  .cinematic-text h2 {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+}

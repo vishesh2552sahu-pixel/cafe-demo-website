@@ -1,0 +1,101 @@
+.signature-products {
+  background: var(--color-charcoal);
+  position: relative;
+  overflow: hidden;
+}
+
+.signature-products::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 67, 0.3), transparent);
+}
+
+.signature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-md);
+}
+
+.signature-card {
+  background: var(--color-charcoal-light);
+  border: 1px solid rgba(212, 168, 67, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.signature-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212, 168, 67, 0.4);
+  box-shadow: var(--shadow-card-hover), var(--shadow-gold);
+}
+
+.signature-card-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--color-black);
+}
+
+.signature-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out);
+}
+
+.signature-card:hover .signature-card-image img {
+  transform: scale(1.08);
+}
+
+.signature-card-body {
+  padding: var(--space-md);
+}
+
+.signature-card-body h3 {
+  font-family: var(--font-display);
+  color: var(--color-cream);
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.signature-card-body p {
+  font-size: 0.85rem;
+  color: rgba(245, 240, 232, 0.5);
+  margin-bottom: var(--space-sm);
+  line-height: 1.5;
+}
+
+.signature-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.signature-price {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-gold);
+}
+
+@media (max-width: 768px) {
+  .signature-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .signature-grid {
+    grid-template-columns: 1fr;
+  }
+}
